@@ -145,3 +145,18 @@ while True:
     client.send(cmd_input.encode('utf-8'))
     print(client.recv(1024).decode('utf-8'))
 ```
+
+#### 将python脚本打包成.exe文件
+- 安装pyinstaller
+  - 1.在windows主机上安装python环境
+  - 2.使用pip工具安装pyinstaller
+  ```python
+  pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple pyinstaller
+  ```
+  - 3.将py脚本打包成.exe文件
+  ```python
+  pyinstaller -i 2.ico -F -c client.py
+  #-i：表示要加载的图标（没有选择图标可以不用写）
+  #-F：表示打包成.exe可执行文件
+  #-c：表示打包程序有窗口
+  ``` 
