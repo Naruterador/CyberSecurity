@@ -9,33 +9,41 @@ nmap-A 127.0.0.1
 nmap 127.0.0.1
 nmap 127.0.0.1/24
 ```
+
 #### Nmap 主机发现
+
 - -sP ping扫描
 ```shell
 nmap -sP 127.0.0.1
 ```
+
 - -P0 无ping扫描备注：【协议1,协设2〕【目标】扫描
 ```shell
 nmap -P0 127.0.0.1
 ```
+
 - 如果想知道是如何判断目标主机是否存在可以使用--packet-trace选项
 ```shell
 nmap -P0 --packet-trace 127.0.0.1
 ```
+
 - -PS TCP SYN Ping扫描
 ```shell
 nmap -PS -v 127.0.0.1
 #指定端口
 nmap -PS 80,100-200 -v 127.0.0.1
 ```
+
 - -PA TCP ACK Ping扫描
 ```shell
 nmap -PA -v 127.0.0.1
 ```
+
 - -PU UDP Ping扫描
 ```shell
 nmap -PU -v 127.0.0.1
 ```
+
 - -PE;-PP;-PM ICMP Ping Types 扫描
    - 使用ICMP Echo扫描方式
    ```shell
@@ -47,57 +55,69 @@ nmap -PU -v 127.0.0.1
      mmap -PP -v 127.0.0.1
      #使用ICMP地址掩码Ping扫描
      nmap -PM -v 127.0.0.1
+
 - -PR ARP Ping
    ```shell
    #-PR可以实现ARP协议的主机发现
    #当目标主机和我们处于同一个网段的时候，使用ARP协议扫描技术就是最佳的选择。不仅速度快，扫描结果也是最为精准。这是因为没有任何的安全措施会阻止正常的ARP请求
    nmap -PR 127.0.0.1
    ```
+
 - -n 禁止DNS反向解析(使用该选项的时Nmap永远不对目标ip地址作反向域名解析)
    ```shell
    #-n
    nmap -n 127.0.0.1
    ```
+
 - -R 反向解析域名(使用该选项的时候Nmap永远对目标ip地址作反向域名解析)
    ```shell
    #-R
    nmap -R -sL 127.0.0.1
    ```
+
 - --system-dns
    ```shell
    #--system-dns 使用系统域名解析器(如果你希望使用系统自带的解析器，就制定该选项(通过getnameinfo()调用一次解析一个IP)
    nmap --system-dns 127.0.0.1 127.0.0.2
+
 - -sL列表扫描
    ```shell
    nmap -sL 127.0.0.1
    ```
+
 - -sL
    ```shell
    #禁止反向域解折（使用该选项的时候Nmap不对目标ip地址作反向城名解机）
    nmap -n -sL 127.0.0.1
    ```
+
 - -6 扫描IPV6地址
    ```shell
    #-6
    nmap -6 fe80::d920:6c18:1f7f:3d7c
    ```
+
 - --traceroute
 ```shell
    #--traceroute 路由跟踪(使用--traceroute选项即可进行路由追踪)使用路由追踪功能可以帮助用户了解网络的同行情况,通过此选项可以轻松地查出从计算机到目标之间所经过的网络节点,并可以看到通过各个节点的时间.
    nmap --traceroute -v 127.0.0.1
 ```
+
 - -PY
 ```shell
 # -PY SCTP INIT Ping扫描（通过向目标发送INIT包,根据目标主机的相应判断目标主机是否存活)
 nmap-PY -v 127.0.0.1
 ```
+
 #### 探索网络
+
 - -T
   - -T 时序选项
   ```shell
   nmap -T0 127.0.0.1
   nmap -T1 127.0.0.1
   ```
+
   - T0-T5：使用的是一种快速扫描的方式，扫描速度的级别范围在（T0-T5）之间，级别越高，扫描越快。
     - -T0(编执的)丰常慢的扫描,用于1DS逃避。
     - -T1(史崇的)缓慢的扫描,用于IDS逃避。
@@ -105,6 +125,7 @@ nmap-PY -v 127.0.0.1
     - -T3(普通的)：默认,根据目标的反应自动调整时间，
     - -T4(野蜜的)快速扫描,常用扫描方式,需萝在很好的网络坏境下进行扫描,请求可能会淹没目标.
     - -T5(疯狂的)急速扫描,这种扫描方式以钙性准确度来提升扫描速度.
+
 - -p
   - -p 常用扫描方式(-p指定扫描端口如80,1433,1521,3306,3389等等）
   ```shell
@@ -188,6 +209,7 @@ TCP协议的主要过程由三次握手构成：主动端先发送SYN报文，�
   ```shell
   nmap -b 127.0.0.1
   ```
+
 #### 指纹识别与探测
 - -sV
   - -sV 版本探测
@@ -293,7 +315,7 @@ intensity则是对应的--version-intensity 2的快捷方式,轻量级扫描会�
   nmap --max-scan-delay 30s 127.0.0.1
   ```
 
-  #### 防火墙/IDS逃逸
+#### 防火墙/IDS逃逸
 - -f
   - -f报文分段
   ```shell
