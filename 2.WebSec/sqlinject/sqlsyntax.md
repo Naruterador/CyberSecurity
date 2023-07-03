@@ -21,16 +21,15 @@
 SELECT column_name,column_name FROM table_name ORDER BY column_name,column_name ASC|DESC;
 ```
 
-- 演示数据库
-+----+--------------+---------------------------+-------+---------+
-| id | name         | url                       | alexa | country |
-+----+--------------+---------------------------+-------+---------+
-| 1  | Google       | https://www.google.cm/    | 1     | USA     |
-| 2  | 淘宝          | https://www.taobao.com/   | 13    | CN      |
-| 3  | 菜鸟教程      | http://www.runoob.com/    | 4689  | CN      |
-| 4  | 微博          | http://weibo.com/         | 20    | CN      |
-| 5  | Facebook     | https://www.facebook.com/ | 3     | USA     |
-+----+--------------+---------------------------+-------+---------+
+  - 演示数据库
+
+  | id | name       | url                     | alexa | country |
+  |----|------------|-------------------------|-------|---------|
+  | 1  | Google     | https://www.google.cm/  | 1     | USA     |
+  | 2  | 淘宝        | https://www.taobao.com/ | 13    | CN      |
+  | 3  | 菜鸟教程    | http://www.runoob.com/  | 4689  | CN      |
+  | 4  | 微博        | http://weibo.com/       | 20    | CN      |
+  | 5  | Facebook   | https://www.facebook.com/| 3     | USA     |
 
   - 从 "Websites" 表中选取所有网站，并按照 "alexa" 列排序：
   ```sql
@@ -64,29 +63,30 @@ SELECT column_name(s) FROM table1 UNION ALL SELECT column_name(s) FROM table2;
 
 #### 演示数据库
 - "Websites" 表的数据：
-+----+--------------+---------------------------+-------+---------+
+
 | id | name         | url                       | alexa | country |
-+----+--------------+---------------------------+-------+---------+
+|----|--------------|---------------------------|-------|---------|
 | 1  | Google       | https://www.google.cm/    | 1     | USA     |
 | 2  | 淘宝          | https://www.taobao.com/   | 13    | CN      |
 | 3  | 菜鸟教程      | http://www.runoob.com/    | 4689  | CN      |
 | 4  | 微博          | http://weibo.com/         | 20    | CN      |
 | 5  | Facebook     | https://www.facebook.com/ | 3     | USA     |
 | 7  | stackoverflow | http://stackoverflow.com/ |   0 | IND     |
-+----+---------------+---------------------------+-------+---------+
+
 - "apps" APP 的数据：
-+----+------------+-------------------------+---------+
+
 | id | app_name   | url                     | country |
-+----+------------+-------------------------+---------+
+|----|------------|-------------------------|---------|
 |  1 | QQ APP     | http://im.qq.com/       | CN      |
 |  2 | 微博 APP | http://weibo.com/       | CN      |
 |  3 | 淘宝 APP | https://www.taobao.com/ | CN      |
-+----+------------+-------------------------+---------+
 
 - 从 "Websites" 和 "apps" 表中选取所有不同的country（只有不同的值）：
+
 ```sql
 SELECT country FROM Websites UNION SELECT country FROM apps ORDER BY country;
 ```
+
 - 执行以上 SQL 输出结果如下：
 ![pics1](../sqlinject/pics/1.png)
 - UNION 不能用于列出两个表中所有的country。如果一些网站和APP来自同一个国家，每个国家只会列出一次。UNION 只会选取不同的值。请使用 UNION ALL 来选取重复的值！
@@ -118,3 +118,14 @@ SELECT country, name FROM Websites WHERE country='CN' UNION ALL SELECT country, 
 - user()
 - database()
 - version()
+
+
+information_schema
+information_schema.tables
+information_schema.columns
+
+
+
+table_name
+table_schema
+column_name
