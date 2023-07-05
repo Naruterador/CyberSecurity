@@ -124,8 +124,6 @@ information_schema
 information_schema.tables
 information_schema.columns
 
-
-
 table_name
 table_schema
 column_name
