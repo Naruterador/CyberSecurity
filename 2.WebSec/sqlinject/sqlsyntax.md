@@ -119,11 +119,12 @@ SELECT country, name FROM Websites WHERE country='CN' UNION ALL SELECT country, 
 - database()
 - version()
 
-
-information_schema
-information_schema.tables
-information_schema.columns
-
-table_name
-table_schema
-column_name
+## Mysql(Mariadb)内部函数和表介绍
+- information_schema: MySQL数据库中的一个特殊数据库，它包含了用于描述数据库结构和元数据的系统表。它提供了一种访问和查询数据库元数据的方法，包括表名、列名、索引、触发器等信息。
+- information_schema.tables: information_schema数据库中的一个表，它包含了当前数据库中所有表的信息。通过查询这个表，可以获取有关表的详细信息，如表名、表所属的数据库、表的类型（例如表、视图等）以及其他元数据信息。
+- information_schema.columns: information_schema数据库中的另一个表，它包含了当前数据库中所有表的列信息。通过查询这个表，可以获取有关表中列的详细信息，如列名、列的数据类型、是否允许为空、默认值等。
+- 以下是这些表中常用的列名和它们的含义：
+  - table_name：表的名称。
+  - table_schema：表所属的数据库名称。
+  - column_name：列的名称。
+  - 其他列名和含义根据具体的表结构可能有所不同，但通常还包括数据类型、是否允许为空、默认值等列的信息。
