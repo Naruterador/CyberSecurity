@@ -11,13 +11,14 @@
   - 对于SQL语句要执行的动作来说，无论是事务还是查询，and运算符连接的所有条件都必须为true。
   - 对于SQL语句要执行的动作来说，无论是事务还是查询，or运算符连接的所有条件中只需要有一个为true即可。
 
-#### order by
-- ORDER BY 关键字用于对结果集进行排序。
-- ORDER BY 关键字用于对结果集按照一个列或者多个列进行排序。
-- ORDER BY 关键字默认按照升序对记录进行排序。如果需要按照降序对记录进行排序，您可以使用 DESC 关键字。
+- order by
+  - ORDER BY --> 关键字用于对结果集进行排序。
+  - ORDER BY --> 关键字用于对结果集按照一个列或者多个列进行排序。
+  - ORDER BY --> 关键字默认按照升序对记录进行排序。如果需要按照降序对记录进行排序，您可以使用 DESC 关键字。
 
-- SQL ORDER BY 语法
+
 ```sql
+#SQL ORDER BY 语法:
 SELECT column_name,column_name FROM table_name ORDER BY column_name,column_name ASC|DESC;
 ```
 
@@ -128,3 +129,59 @@ SELECT country, name FROM Websites WHERE country='CN' UNION ALL SELECT country, 
   - table_schema：表所属的数据库名称。
   - column_name：列的名称。
   - 其他列名和含义根据具体的表结构可能有所不同，但通常还包括数据类型、是否允许为空、默认值等列的信息。
+
+## Sql注入原理:
+- SQL注入原理
+  - 就是通过把恶意的sql命令插入web表单递交给服务器，或者输入域名或页面请求的查询字符串递交到服务器，达到欺骗服务器，让服务器执行这些恶意的sql命令，从而让攻击者，可以绕过一些机制，达到直接访问数据库的一种攻击手段。
+
+- SQL注入产生的原因
+  - SQL 注入漏洞存在的原因，就是拼接SQL参数。也就是将用于输入的查询参数，直接拼接在SQL语句中，导致了SQL注入漏洞。web 开发人员无法保证所有的输入都已经过滤攻击者利用发送给服务器的输入参数构造可执行的 SQL 代码（可加入到 get 请求、 post 谓求、 http 头信思、 cookie 中）
+
+
+- SQL注入分类
+  - 数字型        
+  - 字符型       
+  - 报错注入     
+  - Boollean注入                
+  - 时间注入
+
+- SQL注入思路
+  - 判断是否存在注入，注入是字符型还是数字型
+  - 猜解SQL查询语句中的字段数
+  - 确定回显位置
+  - 获取当前数据库
+  - 获取数据库中的表
+  - 获取表中的字段名
+  - 得到数据
+
+## Sql注入防护
+#### PDO
+- PDO（PHP Data Objects）是PHP中的一个数据库抽象层，用于连接和操作不同类型的数据库，而无需直接使用特定数据库扩展（如MySQLi、SQLite等）。PDO提供了一种一致的接口，允许开发者编写可移植的数据库代码，而不必担心数据库后端的变化。
+- PDO（PHP Data Objects）通过使用预处理语句和参数绑定来防止SQL注入攻击。以下是PDO如何实现这种防护的详细说明：
+  - 预处理语句：PDO支持预处理语句，这是SQL查询的一种形式，其中查询中的值被替代为占位符（通常是问号 ? 或命名占位符如 :username）。查询中的实际值在执行查询之前不会直接与SQL语句组合。
+  - 参数绑定：在预处理语句中，您将占位符与变量绑定在一起。这些变量的值会在查询执行之前被安全地绑定到占位符上。在参数绑定过程中，PDO会自动转义或转换输入值，以确保它们不会破坏查询的结构或被误解为恶意代码。
+
+```php
+#以下是一个简单的PDO预处理语句和参数绑定示例：
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+// 创建PDO连接
+$pdo = new PDO("mysql:host=localhost;dbname=mydatabase", "username", "password");
+
+// 创建预处理语句
+$sql = "SELECT * FROM users WHERE username = :username AND password = :password";
+$stmt = $pdo->prepare($sql);
+
+// 将变量与占位符绑定
+$stmt->bindParam(':username', $username, PDO::PARAM_STR);
+$stmt->bindParam(':password', $password, PDO::PARAM_STR);
+
+// 执行查询
+$stmt->execute();
+
+
+#在这个示例中，$username 和 $password 的值会被安全地绑定到相应的占位符上，PDO会处理任何必要的转义或编码以确保查询的安全性。因此，即使用户输入包含恶意SQL代码，也不会对数据库造成危害，因为输入会被视为普通文本。
+#总之，PDO的预处理语句和参数绑定机制是一种有效的防止SQL注入攻击的方法，因为它们确保用户输入在进入数据库查询之前被正确处理和隔离。这有助于保护数据库免受恶意注入的影响。
+```
+
