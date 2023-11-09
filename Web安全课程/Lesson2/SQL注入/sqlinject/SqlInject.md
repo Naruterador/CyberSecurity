@@ -1,22 +1,3 @@
-#### and和or的区别
-- 区别1：
-  - and是与运算；or是或运算。
-- 区别2：
-  - and运算要前后两个运算对象都为真是，and运算结果才为真；
-  - or运算是两个运算对象中有一个为真，or运算结果就为真。
-- 区别3：
-  - and运算中如果第一个条件和第二个条件都成立，则and运算符显示一条记录。
-  - or运算中如果第一个条件和第二个条件中只要有一个成立，则or运算符显示一条记录。
-- 区别4：
-  - 对于SQL语句要执行的动作来说，无论是事务还是查询，and运算符连接的所有条件都必须为true。
-  - 对于SQL语句要执行的动作来说，无论是事务还是查询，or运算符连接的所有条件中只需要有一个为true即可。
-
-- order by
-  - ORDER BY --> 关键字用于对结果集进行排序。
-  - ORDER BY --> 关键字用于对结果集按照一个列或者多个列进行排序。
-  - ORDER BY --> 关键字默认按照升序对记录进行排序。如果需要按照降序对记录进行排序，您可以使用 DESC 关键字。
-
-
 ```sql
 #SQL ORDER BY 语法:
 SELECT column_name,column_name FROM table_name ORDER BY column_name,column_name ASC|DESC;
@@ -47,9 +28,6 @@ DELETE FROM users WHERE id = 1;
 UPDATE students SET score = 90 WHERE student_id = '20210001';
 
 ```
-
-
-
   | id | name       | url                     | alexa | country |
   |----|------------|-------------------------|-------|---------|
   | 1  | Google     | https://www.google.cm/  | 1     | USA     |
@@ -74,6 +52,23 @@ UPDATE students SET score = 90 WHERE student_id = '20210001';
   ```sql
   SELECT * FROM Websites ORDER BY 1; 
   ```
+#### and和or的区别
+- 区别1：
+  - and是与运算；or是或运算。
+- 区别2：
+  - and运算要前后两个运算对象都为真是，and运算结果才为真；
+  - or运算是两个运算对象中有一个为真，or运算结果就为真。
+- 区别3：
+  - and运算中如果第一个条件和第二个条件都成立，则and运算符显示一条记录。
+  - or运算中如果第一个条件和第二个条件中只要有一个成立，则or运算符显示一条记录。
+- 区别4：
+  - 对于SQL语句要执行的动作来说，无论是事务还是查询，and运算符连接的所有条件都必须为true。
+  - 对于SQL语句要执行的动作来说，无论是事务还是查询，or运算符连接的所有条件中只需要有一个为true即可。
+
+- order by
+  - ORDER BY --> 关键字用于对结果集进行排序。
+  - ORDER BY --> 关键字用于对结果集按照一个列或者多个列进行排序。
+  - ORDER BY --> 关键字默认按照升序对记录进行排序。如果需要按照降序对记录进行排序，您可以使用 DESC 关键字。
 
 #### union
 - SQL UNION 操作符合并两个或多个 SELECT 语句的结果。
