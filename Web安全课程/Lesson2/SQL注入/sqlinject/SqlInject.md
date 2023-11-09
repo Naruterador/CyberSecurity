@@ -23,6 +23,32 @@ SELECT column_name,column_name FROM table_name ORDER BY column_name,column_name 
 ```
 
   - 演示数据库
+```shell
+#创建数据库
+create database sqltest;
+
+#使用数据库
+use sqltest;
+
+#创建数据表
+create table websites (id INT(11) PRIMARY KEY,name VARCHAR(100),url VARCHAR(100),alexa INT(100),country VARCHAR(100));
+
+#查看表字段
+desc websites；
+
+
+#插入数据
+insert into webistes values(1,'google','http://www.google.com',1,'USA');
+
+#删除某条数据
+DELETE FROM users WHERE id = 1;
+
+#修改某一条数据
+UPDATE students SET score = 90 WHERE student_id = '20210001';
+
+```
+
+
 
   | id | name       | url                     | alexa | country |
   |----|------------|-------------------------|-------|---------|
