@@ -1,9 +1,4 @@
-```sql
-#SQL ORDER BY 语法:
-SELECT column_name,column_name FROM table_name ORDER BY column_name,column_name ASC|DESC;
-```
-
-  - 演示数据库
+- 演示数据库
 ```shell
 #创建数据库
 create database sqltest;
@@ -36,6 +31,10 @@ UPDATE students SET score = 90 WHERE student_id = '20210001';
   | 4  | 微博        | http://weibo.com/       | 20    | CN      |
   | 5  | Facebook   | https://www.facebook.com/| 3     | USA     |
 
+  ```sql
+  #SQL ORDER BY 语法:
+  SELECT column_name,column_name FROM table_name ORDER BY column_name,column_name ASC|DESC;
+  ```
   - 从 "Websites" 表中选取所有网站，并按照 "alexa" 列排序：
   ```sql
   SELECT * FROM Websites ORDER BY alexa;
@@ -52,6 +51,9 @@ UPDATE students SET score = 90 WHERE student_id = '20210001';
   ```sql
   SELECT * FROM Websites ORDER BY 1; 
   ```
+  
+  
+
 #### and和or的区别
 - 区别1：
   - and是与运算；or是或运算。
@@ -69,6 +71,7 @@ UPDATE students SET score = 90 WHERE student_id = '20210001';
   - ORDER BY --> 关键字用于对结果集进行排序。
   - ORDER BY --> 关键字用于对结果集按照一个列或者多个列进行排序。
   - ORDER BY --> 关键字默认按照升序对记录进行排序。如果需要按照降序对记录进行排序，您可以使用 DESC 关键字。
+
 
 #### union
 - SQL UNION 操作符合并两个或多个 SELECT 语句的结果。
