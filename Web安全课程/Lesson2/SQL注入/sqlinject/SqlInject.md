@@ -209,3 +209,17 @@ $stmt->execute();
 #总之，PDO的预处理语句和参数绑定机制是一种有效的防止SQL注入攻击的方法，因为它们确保用户输入在进入数据库查询之前被正确处理和隔离。这有助于保护数据库免受恶意注入的影响。
 ```
 
+## 部署sqli-labs环境
+```shell
+#安装docker
+cd /opt/docker
+rpm -Uvh *.rpm --nodeps --force
+
+
+#导入sqlilibs容器
+docker import sqlilabs.tar sqlilabs:2.0
+
+
+#启动容器
+docker run -it -d -p 80:80 sqlilabs:2.0 /run.sh
+```
